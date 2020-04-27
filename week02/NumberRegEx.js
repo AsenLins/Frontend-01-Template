@@ -23,6 +23,6 @@ console.log('小数:2.',numberLiteralRegx.test('2.'))
 console.log('科学计数',numberLiteralRegx.test('1000e+12')) 
 console.log('0bxx',numberLiteralRegx.test('0b232')) 
 console.log('0oxx',numberLiteralRegx.test('0o1234')) 
-console.log('0x',numberLiteralRegx.test('0x12')) 
+console.log('0x',numberLiteralRegx.test('0x1245')) 
 console.log('二进制010101',numberLiteralRegx.test('010101')) 
 
