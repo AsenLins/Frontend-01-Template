@@ -14,7 +14,7 @@ https://tc39.es/ecma262/#prod-HexDigits
 /*匹配二进制010101 */
 
 
-const numberLiteralRegx=/^([+-])?([\d]*[.]{0,1}[\d]*)(e[+-])?[\d]*$|^0[bBoO]+[0-7]*$|^0[xX]+[0-9a-fA-f]*$/g;
+const numberLiteralRegx=/(^[+-]?([\d]*[.]{0,1}[\d]*)(e[+-])?[\d]*$)|(^0[bBoO]+[0-7]*$)|(^0[xX]+[0-9a-fA-f]*$)/g;
 
 console.log('整数:1',numberLiteralRegx.test('1')) 
 console.log('小数:1.2',numberLiteralRegx.test('1.2')) 
@@ -25,4 +25,9 @@ console.log('0bxx',numberLiteralRegx.test('0b232'))
 console.log('0oxx',numberLiteralRegx.test('0o1234')) 
 console.log('0x',numberLiteralRegx.test('0x1245')) 
 console.log('二进制010101',numberLiteralRegx.test('010101')) 
+
+
+console.log('match','.2'.match(numberLiteralRegx));
+
+console.log('test',/^[+-]?([\d]*[.]{0,1}[\d]*)(e[+-])?[\d]*$/g.test('1.2'));
 
