@@ -14,17 +14,24 @@ https://tc39.es/ecma262/#prod-HexDigits
 /*匹配二进制010101 */
 
 
-const numberLiteralRegx=/(^[+-]?([\d]*[.]{0,1}[\d]*)(e[+-])?[\d]*$)|(^0[bBoO]+[0-7]*$)|(^0[xX]+[0-9a-fA-f]*$)/g;
+const Integer = /^[\d]+$/; //整型
+const Decimal = /^[.]?[\d]+$|^[\d]+[.]?[\d]+$/; //小数
+const ExponentIndicator = /^[\d]+[eE]\+[\d]+$/; //科学计数
+const BinaryInteger = /^0[bB]+[0-1]+$/; //二进制
+const BigInt = /^\d+n{0,1}$/; //bigInt
+const OctalInteger = /^0[oO]+[0-7]+$/; //八进制
+const HexInteger = /^0[xX]+[0-9a-fA-F]+$/; //十六进制
 
-console.log('整数:1',numberLiteralRegx.test('1')) 
-console.log('小数:1.2',numberLiteralRegx.test('1.2')) 
-console.log('小数:.2',numberLiteralRegx.test('.2')) 
-console.log('小数:2.',numberLiteralRegx.test('2.')) 
-console.log('科学计数',numberLiteralRegx.test('1000e+12')) 
-console.log('0bxx',numberLiteralRegx.test('0b232')) 
-console.log('0oxx',numberLiteralRegx.test('0o1234')) 
-console.log('0x',numberLiteralRegx.test('0x1245')) 
-console.log('二进制010101',numberLiteralRegx.test('010101')) 
+const NumberLiterals = /^[\d]*$|^[\.]{1}[\d]+$|^[\d]*[\.]{1}[\d]*$|^[\d]0+[eE]\+[\d]+$|^0[bB]+[0-1]+$|^\d+n{0,1}$|^0[oO]+[0-7]+$|^0[xX]+[0-9a-fA-F]+$/;
+console.log("整数1:", NumberLiterals.test("1"));
+console.log("小数:1.1", NumberLiterals.test("1.111"));
+console.log("小数.11:", NumberLiterals.test(".11"));
+console.log("科学计数:100e+10", NumberLiterals.test("100e+10"));
+console.log("bigInter:10n", NumberLiterals.test("10n"));
+console.log("二进制0b1010", NumberLiterals.test("0b1010"));
+console.log("八进制:0o123", NumberLiterals.test("0o123"));
+console.log("十六进制:0x1afa", NumberLiterals.test("0x1afa"));
+
 
 
 console.log('match','.2'.match(numberLiteralRegx));
